@@ -42,5 +42,11 @@ namespace ConsoleApp1
         {
             return $"{ID}) {Title} written by {Author} and is type {Type}.";
         }
+
+        public string GetDescription()
+        {
+            string title = GetTitle();
+            return "Description: EMpty" + title;
+        }
     }
 }

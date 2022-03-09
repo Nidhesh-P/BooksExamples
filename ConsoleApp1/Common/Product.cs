@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.ComplexTypes
 {
-    class Product: ITaggable
+    public class Product: ITaggable
     {
         public Product()
         { }

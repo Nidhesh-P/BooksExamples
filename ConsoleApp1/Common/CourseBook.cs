@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class CourseBook : Book, ITaggable
+    public class CourseBook : Book, ITaggable
     {
         public List<string> Tags { get; set; }
 
@@ -14,14 +14,17 @@ namespace ConsoleApp1
 
         public void AddTag(string tag)
         {
-            if (Tags == null)
+            if (ID ==2)
             {
-                Tags = new List<string>();
-            }
-            
-            if (String.Equals(tag, "Maths", StringComparison.InvariantCultureIgnoreCase))
-            {
-                Tags.Add("Mathematics");
+                if (Tags == null)
+                {
+                    Tags = new List<string>();
+                }
+
+                if (String.Equals(tag, "Maths", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Tags.Add("Mathematics");
+                }
             }
 
            Tags.Add(tag.ToUpper());

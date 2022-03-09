@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    interface ITaggable
+    class Class1
     {
-        List<string> GetTags();
-        void RemoveTag(string tag);
-        void AddTag(string tag);
     }
-}                
+}

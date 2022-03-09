@@ -6,28 +6,22 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Book
+    public class Book
     {
         public int ID { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }        
 
         //Default constructor
-        public Book() { }
+        public Book():this(0) { }
 
         //overloaded constructor
-        public Book(int id)
-        {
-            ID = id;
-        }
-
+        public Book(int id):this(id,string.Empty)
+        { }
 
         //overloaded constructor
-        public Book(int id, string title)
-        {
-            ID = id;
-            Title = title;
-        }
+        public Book(int id, string title):this(id, title, String.Empty)
+        {}
 
         //overloaded constructor
         public Book(int id, string title, string author)
@@ -40,6 +34,11 @@ namespace ConsoleApp1
         public string GetDetails()
         {
             return $"{ID}) {Title} written by {Author}.";
+        }
+
+        protected string GetTitle()
+        {
+            return "The Title is " + Title;
         }
     }
 }
