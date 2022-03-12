@@ -32,5 +32,14 @@ namespace BookTests
             Book b = new Book();            
             Assert.AreEqual(0,b.ID);
         }
+         
+
+        public void GetDetailstest()
+        {
+            Book b = new Book();
+            var result =b.GetTitle();
+
+            Assert.IsTrue(!String.IsNullOrEmpty(result));
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace ConsoleApp1.DatabaseObjects
         public void SaveTags()
         {
             var allTags = tags.GetTags();
+            
 
             FileInfo fInfo = new FileInfo(@"C:\\Test\\NewFIle.txt");
             using (StreamWriter file = fInfo.AppendText())

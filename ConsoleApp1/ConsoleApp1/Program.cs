@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1.ComplexTypes;
 using ConsoleApp1.DatabaseObjects;
+using Common;
 
 namespace ConsoleApp1
 {
@@ -14,7 +15,7 @@ namespace ConsoleApp1
         {
             //Console.WriteLine("Main Method");
             Console.WriteLine("******************************************************************");
-
+            #region Commented
             //GreetUser();
             //ApplyConditions();
             //DisplayRowsWithAstrix();
@@ -39,18 +40,37 @@ namespace ConsoleApp1
             //Console.WriteLine(details);
             //DisplayBookTags();
             //
+            #endregion Commented
+            //AddNewFictionBook(); 
+            ProcessCourseBookInvoice();
 
-            AddNewFictionBook();
-            AddNewCourseBook();
-
+            ProcessProductInvoice();
 
             Console.WriteLine("******************************************************************");
             //Console.WriteLine("Back to Main Method");
 
-
-
             Console.ReadKey();
         }
+
+        private static void ProcessProductInvoice()
+        {
+            var product = ProcessProduct();
+
+            InvoiceManager invoiceManager = new InvoiceManager(product);
+            invoiceManager.GenerateInvoice();
+        }
+
+        private static void ProcessCourseBookInvoice()
+        {
+            //Crreate a coursebook
+            var book = AddNewCourseBook();
+
+            //Generate Invoice for course book
+            InvoiceManager invoiceManager = new InvoiceManager(book);
+            invoiceManager.GenerateInvoice();
+        }
+
+        #region << Already Covered >>
 
         private static void AddNewFictionBook()
         {
@@ -68,22 +88,18 @@ namespace ConsoleApp1
             tagsManager.SaveTags();
         }
 
-
-        private static void AddNewCourseBook()
+        private static CourseBook AddNewCourseBook()
         {
-            CourseBook coursebook = new CourseBook()
-            {
-                ID = 4,
-                Title = "ABC of Mathematics",
-                Author = "Chris Ferrie",
-            };
+            CourseBook coursebook = new CourseBook(4, "ABC of Mathematics", "Chris Ferrie", "Maths");
 
-            coursebook.AddTag("maths");
-            coursebook.AddTag("fundamentals");
-            coursebook.AddTag("senior secondary");
+            //coursebook.AddTag("maths");
+            //coursebook.AddTag("fundamentals");
+            //coursebook.AddTag("senior secondary");
 
-            TagsManager tagsManager = new TagsManager(coursebook, coursebook);
-            tagsManager.SaveTags();
+            //TagsManager tagsManager = new TagsManager(coursebook, coursebook);
+            //tagsManager.SaveTags();
+
+            return coursebook;
         }
 
         private static void DisplayBookTags()
@@ -128,7 +144,7 @@ namespace ConsoleApp1
 
                 Console.WriteLine(description);
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine("Exception occured: " + ex.Message);
             }
@@ -146,11 +162,10 @@ namespace ConsoleApp1
             Console.WriteLine("Product properties");
             DisplayProductDetails(product);
         }
-
-        #region << Already Covered >>
-        private static void ProcessProduct()
+       
+        private static Product ProcessProduct()
         {
-            Product product = new Product(1, "book", "reading");            
+            Product product = new Product(1, "book", "reading");
 
             Console.WriteLine();
             Console.WriteLine("ProcessProduct Method");
@@ -159,6 +174,7 @@ namespace ConsoleApp1
             Console.WriteLine("Product properties");
             DisplayProductDetails(product);
 
+            return product;
         }
 
         private static void ProductCollection()

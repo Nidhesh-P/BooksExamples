@@ -36,7 +36,7 @@ namespace ConsoleApp1
             return $"{ID}) {Title} written by {Author}.";
         }
 
-        protected string GetTitle()
+        public string GetTitle()
         {
             return "The Title is " + Title;
         }
